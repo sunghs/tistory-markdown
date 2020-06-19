@@ -3,6 +3,7 @@
 대표 Collections (Map, List, Set) 을 선언과 동시에 초기화 하는 방법.  
 클래스 인스턴스 시 생성자에서 주입하지 않고 고정으로 들어가는 값을 세팅하거나 할때 필요한 경우가 있다.
 
+![Java Collection](./../../../static/Language/Java/java-collections.png)
 ### 기본방법
 ```java
 private Map<String, Object> map = new HashMap<>() {
