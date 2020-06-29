@@ -7,7 +7,7 @@
 
 
 FAILURE: Build failed with an exception.
-
+```
 * What went wrong:
 Execution failed for task ':test'.
 > There were failing tests. See the report at: file:///home/sunghs/project/PacketSniffer2/PacketSniffer/build/reports/tests/test/index.html
@@ -25,7 +25,7 @@ BUILD FAILED in 8s
 5 actionable tasks: 1 executed, 4 up-to-date
 There were failing tests. See the report at: file:///xxx/yyy/zzz/project/build/reports/tests/test/index.html
 오후 9:42:05: Task execution finished 'build'.
-
+```
 ---
 
 그래들 버전이 올라가면서 같이 프로젝트의 Gradle 버전을 올려줘야 하는데 안올려줘서 생기는 문제,
