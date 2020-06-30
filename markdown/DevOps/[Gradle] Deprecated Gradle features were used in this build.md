@@ -31,5 +31,10 @@ There were failing tests. See the report at: file:///xxx/yyy/zzz/project/build/r
 그래들 버전이 올라가면서 같이 프로젝트의 Gradle 버전을 올려줘야 하는데 안올려줘서 생기는 문제,
 빌드시 옵션을 줘서 해당 기능을 끄거나, 그래들 버전을 올리거나 해야한다.
 
+```
+--warining-mode=all --stacktrace
+```
+
+![](./../../static/DevOps/gradle-build-failed-version.png)
 
 [여기를 참조](https://lollolzkk.tistory.com/26)
