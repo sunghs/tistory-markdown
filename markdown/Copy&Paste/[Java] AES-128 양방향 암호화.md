@@ -14,6 +14,12 @@ AES-128 이상 사용하려면 JRE의 정책 라이브러리를 갈아 끼우는
 
 ### 소스
 ```java
+/**
+ * AES-128 암호화
+ *
+ * @author https://sunghs.tistory.com
+ * @see <a href="https://github.com/sunghs/java-utils">source</a>
+ */
 public class Aes128 {
 
     private static final Charset ENCODING_TYPE = StandardCharsets.UTF_8;
