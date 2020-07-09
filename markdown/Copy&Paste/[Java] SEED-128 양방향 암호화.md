@@ -4,7 +4,9 @@
 AES-128과 같이 대칭키를 가진 양방향 암호화이다. 암호화 및 복호화가 가능하다.
 유저키가 16자리를 기반으로 암/복호화를 진행한다.
 
-국내 KISA에서 개발되었으며 JAVA 기본 내장 알고리즘이 아니므로 SEED 블록 알고리즘 클래스 파일이 필요하다.
+국내 KISA에서 개발되었으며 JAVA 기본 내장 알고리즘이 아니므로 SEED 블록 알고리즘 클래스 파일이 필요하다.  
+너무 길어서 gitHub에 올려놓았다.  
+https://github.com/sunghs/java-utils/blob/master/src/main/java/sunghs/java/utils/cipher/support/KisaSeedCbc.java
 
 ### 소스
 ```java
