@@ -58,20 +58,19 @@ public class UserControllerAdvice {
 ```
 
 ### ControllerAdvice
-클래스 상단의 @RestControllerAdvice의 의미가 이 클래스가 Controller로부터 발생한 모든 Exception을 잡아 끌고 오겠다는 의미이다. 
+이 클래스가 Controller로부터 발생한 모든 Exception을 잡아 끌고 오겠다는 의미이다.
 
 RestControllerAdvice는 value를 가질 수 있는데, package의 선언이 가능하다.  
-즉 @RestControllerAdvice("sunghs.rest.api.user")와 같이 선언하면 sunghs.rest.api.user 패키지 안에서 일어나는 Controller 들의 Exception만 포착한다.
-
+즉 @RestControllerAdvice("sunghs.rest.api.user")와 같이 선언하면 sunghs.rest.api.user 패키지 안에서 일어나는 Controller 들의 Exception만 포착한다.  
 어노테이션을 보면 RestControllerAdvice와 ControllerAdvice 두개가 있는데, Rest가 붙은 어노테이션은 ResponseBody의 역할을 같이 수행하므로, 결과물로 response 응답이 가능하다. (return 하는 즉시 해당 객체가 responseBody로 시리얼라이즈 된다.)
 
 일반적인 ControllerAdvice는 웹MVC와 같은 곳에서 URL 리졸버 등에 의해 처리 될 데이터를 받아 핸들링한다.
-
 ### ExceptionHandler
 이제 이 Exception을 받아서 처리 할 메소드를 구현한다. Exception 별로 메소드를 구현 할 수 있으며, override가 가능하다.
 
 위에서 모든 Throwable 타입의 예외는 defaultHandler를 타서 FORBIDDEN status를 response하게 되어있으나, 아래 RuntimeException을 상속받아 구현 한 UserException은 userHandler를 타서 200 OK를 response 하게 된다.
 
+ExceptionInfo에 에러 사유와 request URL을 넣어 클라이언트에 문제가 생겼음을 return 해준다.
 
 ### UserException의 모양
 ```java
@@ -128,3 +127,6 @@ UserController에 두개 추가한다.
 #### 그외 다른 Exception 테스트
 ![](./../../static/Framework/default-exception-req.png)
 ![](./../../static/Framework/default-exception-res.png)
+
+#### 성공이다.
+앞으로는 Exception이 발생해도 Connection이 끊어지는 형태가 아닌 에러가 발생했음을 자동으로 핸들링 할 수 있다.
