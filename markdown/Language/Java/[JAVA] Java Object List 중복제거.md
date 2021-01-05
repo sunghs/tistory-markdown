@@ -1,5 +1,7 @@
 # Java Object List 중복제거
 
+[Github 소스](https://github.com/sunghs/java-utils)  
+
 Java8 이상의 Collections에는 Stream API 사용 시 distinct라는 중복 제거 메소드가 있다.  
 Stream API의 distinct 메소드는 Object 의 equals 로 비교하므로 객체 자체가 같은지를 비교한다.
 
