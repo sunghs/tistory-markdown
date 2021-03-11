@@ -92,6 +92,6 @@ public class TestClass {
 
 ## 결과
 ```
-[main] INFO sunghs.tistory.markdown.TestClass - 500
-[main] INFO sunghs.tistory.markdown.TestClass - 실패
+[main] INFO sunghs.tistory.markdown.enumtest.TestClass - 500
+[main] INFO sunghs.tistory.markdown.enumtest.TestClass - 실패
 ```

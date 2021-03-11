@@ -1,4 +1,4 @@
-package sunghs.tistory.markdown;
+package sunghs.tistory.markdown.algorithm;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

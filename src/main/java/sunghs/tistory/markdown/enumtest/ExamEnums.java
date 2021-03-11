@@ -1,4 +1,4 @@
-package sunghs.tistory.markdown;
+package sunghs.tistory.markdown.enumtest;
 
 import java.util.Collections;
 import java.util.Map;

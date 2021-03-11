@@ -19,9 +19,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    annotationProcessor("org.projectlombok:lombok")
+
+    implementation ("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-cache")
+    implementation("org.apache.commons:commons-lang3")
+
+    testImplementation("org.projectlombok:lombok")
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

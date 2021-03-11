@@ -1,4 +1,4 @@
-package sunghs.tistory.markdown;
+package sunghs.tistory.markdown.enumtest;
 
 import lombok.extern.slf4j.Slf4j;
 
