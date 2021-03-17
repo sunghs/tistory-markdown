@@ -121,7 +121,7 @@ public class HeapDumpMaker {
 현재 추가할 application이 REST API 등이라면, endpoint를 하나 만들어 HeapDump 파일을 return 하는 식으로 만들 수 있고,
 특정 경로에 파일을 만들어 놓거나, 추가적으로 SSH, SFTP 등으로 전송하는 등 추가적인 트윅을 하면 된다.
 
-### stateless 등의 REST API로 return 하는 경우 이런식으로 하면 된다. (예)
+### stateless 등의 REST API로 return 하는 경우 (예)
 
 ```java
 public ResponseEntity<Resource> dump(final HttpServletRequest request) {
