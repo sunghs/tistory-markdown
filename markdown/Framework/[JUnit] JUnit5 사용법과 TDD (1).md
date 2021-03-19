@@ -169,11 +169,11 @@ private boolean convert(Integer i) {
 이런식으로 5 미만이라면 통과하게 메소드를 하나 만들어 시도했더니 5는 바로 통과하지 못하고 Error가 발생하게 된다.
 
 Assertions 메소드에는 여러가지가 있는데, 대표적으로
-`public static void assertTrue(boolean condition)`
-`public static void assertFalse(boolean condition)`
-`public static void assertEquals`
-`public static void assertSame(Object expected, Object actual)`
-`public static <T extends Throwable> T assertThrows(Class<T> expectedType, Executable executable)`
+`public static void assertTrue(boolean condition)`  
+`public static void assertFalse(boolean condition)`  
+`public static void assertEquals`  
+`public static void assertSame(Object expected, Object actual)`  
+`public static <T extends Throwable> T assertThrows(Class<T> expectedType, Executable executable)`  
 정도가 있다.
 
 그중 assertEquals가 가장 많이 쓰일텐데, 기본 메소드의 인자값은 2개로, 
