@@ -168,7 +168,7 @@ private boolean convert(Integer i) {
 ![](./../../static/Framework/JUnit/junit-testfail.png)
 이런식으로 5 미만이라면 통과하게 메소드를 하나 만들어 시도했더니 5는 바로 통과하지 못하고 Error가 발생하게 된다.
 
-Assertions 메소드에는 여러가지가 있는데, 대표적으로
+Assertions 메소드에는 여러가지가 있는데, 대표적으로  
 `public static void assertTrue(boolean condition)`  
 `public static void assertFalse(boolean condition)`  
 `public static void assertEquals`  
