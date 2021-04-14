@@ -166,8 +166,8 @@ URL 요청 방식에 대해 권한을 설정한다.
 @Override
 protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
-        .antMatchers("/swagger-ui.html").hasAnyAuthority("USER", "ADMIN")
-        .antMatchers("/admin/**").hasAuthority("ADMIN")
+        .antMatchers("/swagger-ui.html").hasAnyRole("USER", "ADMIN")
+        .antMatchers("/admin/**").hasRole("ADMIN")
         .anyRequest()
         .authenticated()
         .and()
