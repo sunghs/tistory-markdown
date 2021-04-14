@@ -136,8 +136,8 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
 
         if(name.equals("sunghs") && password.equals("1234")) {
             List<GrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority("ADMIN"));
-            authorities.add(new SimpleGrantedAuthority("USER"));
+            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
             return new UsernamePasswordAuthenticationToken(name, password, authorities);
         } else {
             return null;
