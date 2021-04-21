@@ -18,6 +18,19 @@
 
 예제는 [rest-api-example](https://github.com/sunghs/rest-api-example) 에 있습니다.
 
+### 이벤트를 전달할 객체 생성
+
+이 객체가 이벤트 실행의 기준점이 됩니다.
+
+```java
+@AllArgsConstructor
+@ToString
+public class UserEventDto {
+
+    private String userId;
+}
+```
+
 ### 이벤트리스너를 정의할 핸들러 생성
 
 특정 대상자를 조회하는 경우 로깅하도록 이벤트를 생성해 보겠습니다.
