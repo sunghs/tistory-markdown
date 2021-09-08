@@ -81,11 +81,11 @@ public void getResources() {
         PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
         Resource[] resources = patternResolver.getResources(configPattern);
 
-        if(resources.length == 0) {
+        if (resources.length == 0) {
             log.info("Resources Not Found");
         }
 
-        for(Resource resource : resources) {
+        for (Resource resource : resources) {
             log.info("resource name : {}", resource.getFilename()); // 경로를 제외한 파일명만 돌려줍니다. custom.config 등
         }
     } catch (IOException e) {
