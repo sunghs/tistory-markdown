@@ -391,6 +391,9 @@ bootJar {
 > Task :bootJar
 ```
 
+배포시 아래처럼 jar 안에 포함됩니다.
+![](./../../static/Framework/openapi-5.png)
+
 ## 테스트
 실행은 로컬시 bootRun, 배포시 bootJar로 진행하면 되며 설정 건드린게 없다면 url는 http://localhost:8080/swagger-ui/ 입니다. (swagger 2.x와 url 다름)
 
