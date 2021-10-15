@@ -377,6 +377,7 @@ bootJar {
     }
 }
 ```
+위 처럼 수정 하면 아래 task 순서로 실행됩니다.
 ```
 > Task :compileJava
 > Task :processResources
@@ -401,7 +402,7 @@ swagger-ui 화면입니다.
 
 ![](./../../static/Framework/openapi-1.png)
 
-servers가 비어있는 이유는 위에서의 openapi3 설정 시 base-path를 설정하지 않았기 때문입니다. base-path가 있다면 넣어주시면 되고, 같은 로컬에서 실행되는 경우 넣을 필요 없습니다.
+servers가 비어있는 이유는 위에서의 openapi3 설정 시 base-path를 설정하지 않았기 때문입니다. base-path가 있다면 넣어주시면 되고, 같은 로컬에서 실행되는 경우 넣을 필요 없지만 uri에 prefix가 있다면 그부분은 넣어주시면 됩니다.
 
 ![](./../../static/Framework/openapi-2.png)
 
