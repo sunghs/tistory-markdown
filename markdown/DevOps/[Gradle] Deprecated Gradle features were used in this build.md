@@ -28,7 +28,7 @@ There were failing tests. See the report at: file:///xxx/yyy/zzz/project/build/r
 ```
 ---
 
-그래들 버전이 올라가면서 같이 프로젝트의 Gradle 버전을 올려줘야 하는데 안올려줘서 생기는 문제,
+x.x 버전 이후에는 사용하지 못하는 현재 버전에서 deprecated 되는 gradle 기능들이 있어 빌드 시 알려주는 기능이다.
 빌드시 옵션을 줘서 해당 기능을 끄거나, 그래들 버전을 올리거나 해야한다.
 
 ```
