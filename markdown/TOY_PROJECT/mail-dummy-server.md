@@ -49,6 +49,8 @@ SMTP에서 필수 데이터는 `MAIL FROM`, `RCPT TO`, `DATA` 이며
 `EHLO(HALO)` 와 DATA 내 header인 `subject`, `from`, `to` 정도는 생략할 수 있습니다. (있으면 좋음)  
 다만 header와 본문 body는 한줄 띄워야 합니다. (header와 구분짓기 위함)
 
+로컬에서 서버 올리고 테스트 해보려면, terminal 에서 `telnet localhost 25`
+
 ![](../../static/TOY_PROJECT/example.png)
 
 이 프로젝트를 서버 하나에 띄우시고, name server에 추가하신 후 메일 쏘시면 됩니다.
