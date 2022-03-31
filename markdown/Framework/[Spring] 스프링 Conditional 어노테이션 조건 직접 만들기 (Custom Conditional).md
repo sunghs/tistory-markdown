@@ -13,7 +13,7 @@ application.yml 등의 property resource에 특정 값이 있는 경우 configur
 
 하지만 때에 따라 스프링에서 제공하는 Condition 옵션 외에 직접 만들고 싶은 경우가 있습니다.
 
-`spring-context` 모듈에서 제공하는 `Condition` 클래스를 상속해서 이 구현체의 특정 메소드의 반환 여부를 가지고 우리가 원하느 조건을 만들 수 있습니다.
+`spring-context` 모듈에서 제공하는 `Condition` 클래스를 상속해서 이 구현체의 특정 메소드의 반환 여부를 가지고 우리가 원하는 조건을 만들 수 있습니다.
 
 간단한 예제로 System Property에 특정 key/value가 있다면 bean 생성을 할지 말지에 대해 만들어 봅니다. (application.yml 이 아닌 System.Property 입니다.)
 
