@@ -200,3 +200,5 @@ log.info(((DynamicBean) x).getId());
 log.info(((DynamicBean) y).getId());
 log.info(((DynamicBean) z).getId());
 ```
+
+소스는 [여기](https://github.com/sunghs/spring-example/tree/master/src/main/java/sunghs/springexample/beanpostprocessor) 입니다.
