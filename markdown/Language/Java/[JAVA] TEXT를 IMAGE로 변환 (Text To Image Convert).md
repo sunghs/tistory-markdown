@@ -89,7 +89,7 @@ public class TextToImage {
         }
          
         // Write - Image
-        ImageIO.write(bufferedImage, "PNG", fos);
+        ImageIO.write(bufferedImage, "png", fos);
         System.out.println(fileName + " to Image Convert Result : SUCCESS ");
     }
      

@@ -20,7 +20,7 @@ XML 파일의 경로도 **sunghs.springexample.mapper.SampleMapper** 이어야 �
 ### 1. MybatisAutoConfiguration 제거
 이는 application.yml의 mapperLocation을 자동으로 설정하는 MybatisAutoConfiguration을 먼저 제거해야 합니다.
 @SpringBootApplication 이 붙어있는 스프링부트 엔트리포인트의 설정값으로 제외할 수 있습니다.
-![](./../../static/Framework/Mybatis/mybatis-autoconfig-exclude.PNG)
+![](./../../static/Framework/Mybatis/mybatis-autoconfig-exclude.png)
 
 ### 2. yml 또는 properties에 위치 설정
 mybatis.mapper-locations 값을 설정합니다. antPathPattern을 사용하므로, 루트패키지 아래 와일드카드로 명시하면 모든 경로를 재귀탐색해서 매퍼를 가져옵니다.
@@ -51,7 +51,7 @@ DataSource 설정은 다른 예제가 많으니 sqlSessionFactory에 어떻게 m
 
 추가적인 mybatis-config 파일이 있다면 같이 등록해 주면 됩니다. mybatis에서 camelCase 등을 사용하기 위해 보통 config.xml 파일이 하나 생성되는 편입니다.
 
-![](./../../static/Framework/Mybatis/mybatis-sqlsessionfactory-example.PNG)
+![](./../../static/Framework/Mybatis/mybatis-sqlsessionfactory-example.png)
 
 이렇게 설정이 완료되었다면 mapper.xml 파일의 위치가 꼭 interface mapper 파일의 패키지 경로와 동일하지 않아도 정상적으로 인식됩니다.
 

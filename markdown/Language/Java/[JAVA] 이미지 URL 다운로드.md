@@ -102,6 +102,6 @@ class UrlResourceDownloaderTests {
 
 절대경로 없이 사용한다면 클래스패스 기준으로 다운로드 받습니다. 즉 ```new UrlResourceDownloader("get.jpg")``` 이런식으로 쓴다면
 
-![](./../../../static/Language/Java/getjpg.PNG)
+![](./../../../static/Language/Java/getjpg.png)
 
 이렇게 저장됩니다.

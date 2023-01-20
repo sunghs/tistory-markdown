@@ -393,20 +393,20 @@ bootJar {
 ```
 
 배포시 아래처럼 jar 안에 포함됩니다.
-![](./../../static/Framework/openapi-5.PNG)
+![](./../../static/Framework/openapi-5.png)
 
 ## 테스트
 실행은 로컬시 bootRun, 배포시 bootJar로 진행하면 되며 설정 건드린게 없다면 url는 http://localhost:8080/swagger-ui/ 입니다. (swagger 2.x와 url 다름)
 
 swagger-ui 화면입니다.
 
-![](./../../static/Framework/openapi-1.PNG)
+![](./../../static/Framework/openapi-1.png)
 
 servers가 비어있는 이유는 위에서의 openapi3 설정 시 base-path를 설정하지 않았기 때문입니다. base-path가 있다면 넣어주시면 되고, 같은 로컬에서 실행되는 경우 넣을 필요 없지만 uri에 prefix가 있다면 그부분은 넣어주시면 됩니다.
 
-![](./../../static/Framework/openapi-2.PNG)
+![](./../../static/Framework/openapi-2.png)
 
-![](./../../static/Framework/openapi-3.PNG)
+![](./../../static/Framework/openapi-3.png)
 
-![](./../../static/Framework/openapi-4.PNG)
+![](./../../static/Framework/openapi-4.png)
 테스트도 정상 작동합니다.
