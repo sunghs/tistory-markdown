@@ -206,13 +206,11 @@ public RepeatStatus execute(StepContribution contribution, ChunkContext chunkCon
 
 이 때 `PagingItemReader` 가 list를 한방에 넘겨도, doRead() 에 의해 item 단위로 분해되는데, 이때 `ThreadPoolTaskExecutor` 로 분배 됩니다.
 
-또한 `ThreadPoolTaskExecutor` 가 아무리 많다 하더라도, `ChunkOrientedTasklet` 의 `semaphore` 에 의해 동시에 처리 할 숫자가 결정 되는데, 
-이 semaphore 는 `chunkContext` 가 Connection 을 얻었는지에 대해 RUNNING / MONITOR / WAIT 상태가 결정되는 것으로 보입니다.
+또한 `ThreadPoolTaskExecutor` 가 아무리 많다 하더라도, `ChunkOrientedTasklet` 의 `semaphore` 에 의해 동시에 처리 할 숫자가 결정 되는데, 이 semaphore 는 `chunkContext` 가 Connection 을 얻었는지에 대해 RUNNING / MONITOR / WAIT 상태가 결정되는 것으로 보입니다.
 
 즉 Connection 을 얻고 난 뒤 라는 건 `chunkProcessor`가 제 일을 할 수 있을 때, `ThreadPoolTaskExecutor` 에 의해 호출되어 item을 받는 듯 합니다.
 
-따라서, Connection Pool Resource와 Thread Worker 만 충분하다면, 하나의 Chunk가 단일 워커의 Reader-Processor-Writer 구조가 아닌,
-하나의 Reader가 CHUNK_SIZE 이하 혹은 그만큼 가져온 itemList 를 여러 Worker 의 Processor-Writer 구조로 처리 될 수 있는 것 입니다.
+따라서, Connection Pool Resource와 Thread Worker 만 충분하다면, 하나의 Chunk가 단일 워커의 Reader-Processor-Writer 구조가 아닌, 하나의 Reader가 CHUNK_SIZE 이하 혹은 그만큼 가져온 itemList 를 여러 Worker 의 Processor-Writer 구조로 처리 될 수 있는 것 입니다.
 
 따라서 `1 Reader Multiple Writer` 같은 키워드의 구현 방법은 필요가 없게 됩니다.
 
