@@ -20,33 +20,7 @@ DB와 연결 후 mysql에 batch 메타 테이블과 예제 데이터를 넣어�
 
 아래 구성은 `AbstractPagingItemReader` 가 `ChunkOrientedTasklet` 에서 process 하기 전에 한방에 리스트를 넘기기 위함입니다.
 
-```java
-@Bean
-@StepScope
-public AbstractPagingItemReader<ExampleEntity> itemReader() {
-    return new AbstractPagingItemReader<>() {
-        @Override
-        protected void doReadPage() {
-            if (CollectionUtils.isEmpty(results)) {
-                results = new ArrayList<>();
-            } else {
-                results.clear();
-            }
-
-            setPageSize(PAGE_SIZE);
-
-            PageRequest page = PageRequest.of(getPage(), getPageSize(), Sort.by("id").ascending());
-            List<ExampleEntity> list = dataRepository.findAll(page).getContent();
-            log.info("worker - {}, itemReader getListSize : {}", Thread.currentThread().getName(), list.size());
-            results.addAll(list);
-        }
-
-        @Override
-        protected void doJumpToPage(int itemIndex) {
-        }
-    };
-}
-```
+![](./../../static/Framework/spring-batch-multi-thread-chunk/spring-batch-multi-reader.png)
 
 Processor 구성은 필수가 아니니 건너 뛰고, Writer 구성을 하겠습니다.
 
@@ -54,77 +28,21 @@ Processor 구성은 필수가 아니니 건너 뛰고, Writer 구성을 하겠�
 
 들고 온 item이 몇개인지 찍는 로직입니다.
 
-```java
-@Bean
-@StepScope
-public ItemWriter<ExampleEntity> itemWriter() {
-    return items -> log.info("worker - {}, itemWriter itemSize : {}", Thread.currentThread().getName(), items.size());
-}
-```
+![](./../../static/Framework/spring-batch-multi-thread-chunk/spring-batch-multi-writer1.png)
 
 Multi-Thread를 돌려줄 TaskExecutor 구성입니다.
 
 ### ThreadPoolTaskExecutor
-```java
-@Bean
-public TaskExecutor taskExecutor() {
-    ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
-    threadPoolTaskExecutor.setCorePoolSize(WORKER_SIZE);
-    threadPoolTaskExecutor.setMaxPoolSize(WORKER_SIZE);
-    threadPoolTaskExecutor.setThreadNamePrefix("executor-");
-    threadPoolTaskExecutor.setWaitForTasksToCompleteOnShutdown(true);
-    threadPoolTaskExecutor.setAllowCoreThreadTimeOut(true);
-    threadPoolTaskExecutor.setKeepAliveSeconds(1);
-    threadPoolTaskExecutor.initialize();
-    return threadPoolTaskExecutor;
-}
-```
+
+![](./../../static/Framework/spring-batch-multi-thread-chunk/spring-batch-multi-executor.png)
 
 그리고 Step 과 Job 구성입니다.
 
 Listener도 하나 달아줍시다. ThreadPoolTaskExecutor를 종료해 줍니다.
 
 ### Job, Step 구성
-```java
-@Bean
-public Job exampleJob() {
-    return jobBuilderFactory.get("exampleJob")
-            .incrementer(new RunIdIncrementer())
-            .start(exampleStep())
-            .on("*")
-            .end()
-            .end()
-            .preventRestart()
-            .build();
-}
 
-@Bean
-@JobScope
-public Step exampleStep() {
-    return stepBuilderFactory.get("exampleJob.exampleStep")
-            .<ExampleEntity, ExampleEntity>chunk(CHUNK_SIZE)
-            .reader(itemReader())
-            .writer(itemWriter())
-            .listener(jobExecutionListener(taskExecutor()))
-            .taskExecutor(taskExecutor())
-            .throttleLimit(WORKER_SIZE)
-            .build();
-}
-
-public JobExecutionListener jobExecutionListener(TaskExecutor taskExecutor) {
-    return new JobExecutionListener() {
-        @Override
-        public void beforeJob(JobExecution jobExecution) {
-            log.info("exampleJob start");
-        }
-
-        @Override
-        public void afterJob(JobExecution jobExecution) {
-            ((ThreadPoolTaskExecutor) taskExecutor).shutdown();
-        }
-    };
-}
-```
+![](./../../static/Framework/spring-batch-multi-thread-chunk/spring-batch-multi-job,step,listener.png)
 
 ## CHUNK_SIZE, PAGE_SIZE, WORKER_SIZE
 - CHUNK_SIZE, PAGE_SIZE = 100 으로 commit-interval 이 됩니다.
@@ -154,19 +72,8 @@ worker-4 -> 30,31,32 ... 60
 실제로 ItemWriter에서 id만 추출해서 돌려보겠습니다.
 
 ## 변형 된 ItemWriter
-```java
-@Bean
-@StepScope
-public ItemWriter<ExampleEntity> itemWriter() {
-    return items -> {
-        String itemList = items.stream()
-            .map(exampleEntity -> String.valueOf(exampleEntity.getId()))
-            .reduce((s, s2) -> s + "," + s2)
-            .toString();
-        log.info("worker - {}, items : {}", Thread.currentThread().getName(), itemList);
-    };
-}
-```
+
+![](../../static/Framework/spring-batch-multi-thread-chunk/spring-batch-multi-writer2.png)
 
 자기 자신한테 할당 된 entity의 id 값만 모아 comma를 붙이고 하나의 문자열로 계속 append 해서 한번에 출력하는 로직입니다.
 
