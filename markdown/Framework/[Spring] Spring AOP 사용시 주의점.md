@@ -44,9 +44,9 @@ Spring Aspect 사용법에 대해선 설명하지 않고, Spring AOP 를 쓰면�
 ## 0. Aspect 세팅하기
 annotation 과 해당 annotation이 붙은 메소드를 런타임 시 weaving 하는 aspect를 만든다.
 
-![](./../../static/Framework/spring-aop-using-caution/SomeAnnotation.png)
+![](./../../static/Framework/spring-aop-using-caution/someAnnotation.png)
 
-![](./../../static/Framework/spring-aop-using-caution/SomeAnnotationAspect.png)
+![](./../../static/Framework/spring-aop-using-caution/someAnnotationAspect.png)
 
 
 ## 1. self-invocation
