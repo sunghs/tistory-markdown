@@ -72,7 +72,6 @@ Spring Bean 이 아닌 클래스는 Spring AOP를 태울 수 없다.
 
 Spring Bean 이 생성 될 때 프록시 객체로 생성되기 때문이다. 아래의 코드는 그냥 타겟을 직접 호출한다.
 
-## 코드
 ```java
 // service, component, configuration 에서 bean 생성 등이 없는 경우
 public class SomeClass {
